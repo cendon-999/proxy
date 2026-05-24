@@ -5,15 +5,21 @@
 # 节点IP优先级：ip-version: ipv6-prefer
 # 测速细分/筛选：https://8.8.8.8/generate_204、https://[2001:4860:4860::8888]/generate_204
 providers: &providers { type: http, interval: 86400, proxy: 直接连接, header: { User-Agent: ["clash-verge/v2.4.7"] }, health-check: { enable: true, url: 'https://dns.google/generate_204', expected-status: 204,  interval: 900, timeout: 3000, max-failed-times: 2, lazy: false }, override: { ip-version: dual }, exclude-filter: '(?i)套餐|剩余|流量|到期|重置|频道|订阅|官网|禁止|客户端|有效|联系|测试|节点|日期|群组|加入|通知|维护|网址|地址|下载|更新|APP|登录|严禁|海外|恢复|处理|谢谢' }
+
 proxy-providers:
-  link1: { <<: *providers, url: '订阅链接1', path: ./providers/link1.yaml }
-  link2: { <<: *providers, url: '订阅链接2', path: ./providers/link2.yaml }
-  link3: { <<: *providers, url: '订阅链接3', path: ./providers/link3.yaml }
+  #节点A - 优质节点集合，使用时请修改
+  优质服务商: {<<: *BaseProvider, url: '优质订阅源地址1', override: {additional-suffix: ' [优]'}}
+  # 次优质订阅源 - 次优节点集合，使用时请修改
+  次优服务商: {<<: *BaseProvider, url: '优质订阅源地址2', override: {additional-suffix: ' [次]'}}
+  # 备用订阅源 - 次优节点集合，使用时请修改
+  备用服务商: {<<: *BaseProvider, url: '备用订阅源地址', override: {additional-suffix: ' [备]'}}
+  # 自建订阅源 - 自建节点集合，使用时请修改
+  聚合服务商: {<<: *BaseProvider, url: '自建订阅源地址', override: {additional-prefix: '[自建] '}}
+  # 落地订阅源 - 落地服务连接，使用时请修改
+  落地服务商: {<<: *BaseProvider, url: '中转订阅源地址', override: {additional-suffix: ' [中]', dialer-proxy: 中转服务}}
+
 # 策略分组
 use: &use { use: [link1,link2] }
-
-
-
 
 ipv6: true
 allow-lan: false
@@ -53,7 +59,7 @@ tun:
   enable: true
   # device: meta
   # Windows mixed, Android15+ gvisor(抗休眠)
-  stack: mixed
+  stack: gvisor
   auto-route: true
   auto-redirect: true
   auto-detect-interface: true
@@ -134,6 +140,12 @@ dns:
   # fake-ip-ttl: 1
   fake-ip-filter-mode: rule
   fake-ip-filter:
+    - DOMAIN-SUFFIX,stun,real-ip
+    - DOMAIN-KEYWORD,stun,real-ip
+    - DOMAIN-SUFFIX,turn,real-ip
+    - DOMAIN-KEYWORD,turn,real-ip
+    - DOMAIN-SUFFIX,relay,real-ip
+    - DOMAIN-KEYWORD,relay,real-ip
     - RULE-SET,private,real-ip
     - RULE-SET,ads,fake-ip
     - RULE-SET,fcm,real-ip
