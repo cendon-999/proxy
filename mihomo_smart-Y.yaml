@@ -119,7 +119,7 @@ rules:
   - DOMAIN-SUFFIX,genesis.stun.us.demonware.net,游戏节点
   - DOMAIN-SUFFIX,genesis.stun.eu.demonware.net,游戏节点
   - DOMAIN-SUFFIX,sapphire-lobby.prod.demonware.net,游戏节点
-  - DOMAIN-SUFFIX,ingest.datax.activision.com,游戏节点
+  #- DOMAIN-SUFFIX,ingest.datax.activision.com,游戏节点
   - DOMAIN-KEYWORD,hinet.net,台湾智能
   - DOMAIN-KEYWORD,hoy.tv,香港智能
   - DOMAIN-KEYWORD,rthktv,香港智能
