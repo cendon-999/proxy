@@ -8,15 +8,15 @@ providers: &providers { type: http, interval: 86400, proxy: 直接连接, header
 
 proxy-providers:
   #节点A - 优质节点集合，使用时请修改
-  优质服务商: {<<: *BaseProvider, url: '优质订阅源地址1', override: {additional-suffix: ' [优]'}}
+  优质服务商: {<<: *providers, url: '优质订阅源地址1', override: {additional-suffix: ' [优]'}}
   # 次优质订阅源 - 次优节点集合，使用时请修改
-  次优服务商: {<<: *BaseProvider, url: '优质订阅源地址2', override: {additional-suffix: ' [次]'}}
+  次优服务商: {<<: *providers, url: '优质订阅源地址2', override: {additional-suffix: ' [次]'}}
   # 备用订阅源 - 次优节点集合，使用时请修改
-  备用服务商: {<<: *BaseProvider, url: '备用订阅源地址', override: {additional-suffix: ' [备]'}}
+  备用服务商: {<<: *providers, url: '备用订阅源地址', override: {additional-suffix: ' [备]'}}
   # 自建订阅源 - 自建节点集合，使用时请修改
-  聚合服务商: {<<: *BaseProvider, url: '自建订阅源地址', override: {additional-prefix: '[自建] '}}
+  聚合服务商: {<<: *providers, url: '自建订阅源地址', override: {additional-prefix: '[自建] '}}
   # 落地订阅源 - 落地服务连接，使用时请修改
-  落地服务商: {<<: *BaseProvider, url: '中转订阅源地址', override: {additional-suffix: ' [中]', dialer-proxy: 中转服务}}
+  落地服务商: {<<: *providers, url: '中转订阅源地址', override: {additional-suffix: ' [中]', dialer-proxy: 中转服务}}
 
 # 策略分组
 use: &use { use: [link1,link2] }
@@ -164,12 +164,12 @@ dns:
   # fake-ip-ttl: 1
   fake-ip-filter-mode: rule
   fake-ip-filter:
-    #- DOMAIN-SUFFIX,stun,real-ip
-    #- DOMAIN-KEYWORD,stun,real-ip
-    #- DOMAIN-SUFFIX,turn,real-ip
-    #- DOMAIN-KEYWORD,turn,real-ip
-    #- DOMAIN-SUFFIX,relay,real-ip
-    #- DOMAIN-KEYWORD,relay,real-ip
+    - DOMAIN-SUFFIX,stun,real-ip
+    - DOMAIN-KEYWORD,stun,real-ip
+    - DOMAIN-SUFFIX,turn,real-ip
+    - DOMAIN-KEYWORD,turn,real-ip
+    - DOMAIN-SUFFIX,relay,real-ip
+    - DOMAIN-KEYWORD,relay,real-ip
     - RULE-SET,private,real-ip
     - RULE-SET,ads,fake-ip
     - RULE-SET,fcm,real-ip
