@@ -91,7 +91,7 @@ rule-providers:
   proxy_ip: { <<: *ip, url: 'https://raw.githubusercontent.com/echs-top/proxy/main/mrs/ip/proxy.mrs', path: ./rules/proxy_ip.mrs }
   cn_ip: { <<: *ip, url: 'https://raw.githubusercontent.com/echs-top/proxy/main/mrs/ip/cn.mrs', path: ./rules/cn_ip.mrs }
 rules:
-  - DST-PORT,53/853,iDNS劫持
+  - DST-PORT,53/853,代理DNS
   - DST-PORT,5228-5230,直接连接
   - DST-PORT,1337/2710/6881-6999/7777,TRACKER
   - RULE-SET,private_ip,直接连接,no-resolve
