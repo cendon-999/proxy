@@ -120,10 +120,10 @@ rules:
   - DOMAIN-SUFFIX,genesis.stun.eu.demonware.net,游戏节点
   - DOMAIN-SUFFIX,sapphire-lobby.prod.demonware.net,游戏节点
   - DOMAIN-SUFFIX,ingest.datax.activision.com,游戏节点
-  - DOMAIN-KEYWORD,hinet.net,台湾智能
-  - DOMAIN-KEYWORD,hoy.tv,香港智能
-  - DOMAIN-KEYWORD,rthktv,香港智能
-  - DOMAIN-KEYWORD,iill,香港智能
+  - DOMAIN-KEYWORD,hinet.net,台湾|智能选择
+  - DOMAIN-KEYWORD,hoy.tv,香港|智能选择
+  - DOMAIN-KEYWORD,rthktv,香港|智能选择
+  - DOMAIN-KEYWORD,iill,香港|智能选择
   - DOMAIN-KEYWORD,fengshows,DIRECT
   #- DOMAIN-KEYWORD,miguvideo,香港智能
   # --- PikPak (屏蔽地区检测/直连下载) ---
