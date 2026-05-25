@@ -90,30 +90,9 @@ rule-providers:
   google_ip: { <<: *ip, url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.mrs', path: ./rules/google_ip.mrs }
   proxy_ip: { <<: *ip, url: 'https://raw.githubusercontent.com/echs-top/proxy/main/mrs/ip/proxy.mrs', path: ./rules/proxy_ip.mrs }
   cn_ip: { <<: *ip, url: 'https://raw.githubusercontent.com/echs-top/proxy/main/mrs/ip/cn.mrs', path: ./rules/cn_ip.mrs }
+  
 rules:
-  - DST-PORT,53/853,DNS劫持
-  - DST-PORT,5228-5230,直接连接
-  - DST-PORT,1337/2710/6881-6999/7777,TRACKER
-  - RULE-SET,private_ip,直接连接,no-resolve
-  - RULE-SET,private,直接连接
-  - RULE-SET,ads,REJECT
-  - RULE-SET,fcm,直接连接
-  - RULE-SET,captcha,人机验证
-  - RULE-SET,ai,国外AI
-  - RULE-SET,telegram,TELEGRAM
-  - RULE-SET,media,国外媒体
-  - RULE-SET,google,GOOGLE
-  - RULE-SET,Games,游戏平台
-  - RULE-SET,trackerslist,TRACKER
-  - RULE-SET,proxy-lite,代理连接
-  - RULE-SET,cn,直接连接
-  - RULE-SET,telegram_ip,TELEGRAM
-  - RULE-SET,media_ip,国外媒体
-  - RULE-SET,google_ip,GOOGLE
-  - RULE-SET,proxy_ip,代理连接
-  - RULE-SET,cn_ip,直接连接
-
-   # ==================== 独立/特定分流规则 ====================
+  # ==================== 独立/特定分流规则 ====================
   - DOMAIN-KEYWORD,synology,DIRECT
   - DOMAIN-KEYWORD,callofduty,游戏平台
   - DOMAIN-SUFFIX,cod-assets.cdn.callofduty.com,游戏平台
@@ -136,7 +115,28 @@ rules:
   - DOMAIN-KEYWORD,dl-a10b-,DIRECT
   - DOMAIN-KEYWORD,dl-z01a-,DIRECT
   - DOMAIN-REGEX,^dl-[A-Za-z0-9-]+\.mypikpak\.com$,DIRECT
-  
+
+  - DST-PORT,53/853,DNS劫持
+  - DST-PORT,5228-5230,直接连接
+  - DST-PORT,1337/2710/6881-6999/7777,TRACKER
+  - RULE-SET,private_ip,直接连接,no-resolve
+  - RULE-SET,private,直接连接
+  - RULE-SET,ads,REJECT
+  - RULE-SET,fcm,直接连接
+  - RULE-SET,captcha,人机验证
+  - RULE-SET,ai,国外AI
+  - RULE-SET,telegram,TELEGRAM
+  - RULE-SET,media,国外媒体
+  - RULE-SET,google,GOOGLE
+  - RULE-SET,Games,游戏平台
+  - RULE-SET,trackerslist,TRACKER
+  - RULE-SET,proxy-lite,代理连接
+  - RULE-SET,cn,直接连接
+  - RULE-SET,telegram_ip,TELEGRAM
+  - RULE-SET,media_ip,国外媒体
+  - RULE-SET,google_ip,GOOGLE
+  - RULE-SET,proxy_ip,代理连接
+  - RULE-SET,cn_ip,直接连接
   # 极其激进的bt/tracker兜底
   #- DST-PORT,10000-65535,TRACKER
   - MATCH,代理连接
