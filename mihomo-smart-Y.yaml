@@ -93,8 +93,8 @@ rule-providers:
   
 rules:
   # ==================== 独立/特定分流规则 ====================
-  - DOMAIN-KEYWORD,synology,DIRECT
-  - DOMAIN-KEYWORD,quickconnect,DIRECT
+  - DOMAIN-KEYWORD,synology,直接连接
+  - DOMAIN-KEYWORD,quickconnect,直接连接
   - DOMAIN-KEYWORD,callofduty,游戏平台
   - DOMAIN-SUFFIX,cod-assets.cdn.callofduty.com,游戏平台
   - DOMAIN-SUFFIX,genesis.stun.us.demonware.net,游戏平台
@@ -105,17 +105,17 @@ rules:
   - DOMAIN-KEYWORD,hoy.tv,香港|智能选择
   - DOMAIN-KEYWORD,rthktv,香港|智能选择
   - DOMAIN-KEYWORD,iill,香港|智能选择
-  - DOMAIN-SUFFIX,gst.prod.dl.playstation.net,DIRECT
-  - DOMAIN-KEYWORD,fengshows,DIRECT
+  - DOMAIN-SUFFIX,gst.prod.dl.playstation.net,直接连接
+  - DOMAIN-KEYWORD,fengshows,直接连接
   #- DOMAIN-KEYWORD,miguvideo,香港智能
   # --- PikPak (屏蔽地区检测/直连下载) ---
   - DOMAIN,access.mypikpak.com,REJECT
   - DOMAIN,access.mypikpak.net,REJECT
   - DOMAIN,access.pikpak.me,REJECT
   - DOMAIN,access.pikpakdrive.com,REJECT
-  - DOMAIN-KEYWORD,dl-a10b-,DIRECT
-  - DOMAIN-KEYWORD,dl-z01a-,DIRECT
-  - DOMAIN-REGEX,^dl-[A-Za-z0-9-]+\.mypikpak\.com$,DIRECT
+  - DOMAIN-KEYWORD,dl-a10b-,直接连接
+  - DOMAIN-KEYWORD,dl-z01a-,直接连接
+  - DOMAIN-REGEX,^dl-[A-Za-z0-9-]+\.mypikpak\.com$,直接连接
 
   - DST-PORT,53/853,DNS劫持
   - DST-PORT,5228-5230,直接连接
