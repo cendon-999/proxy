@@ -94,6 +94,7 @@ rule-providers:
 rules:
   # ==================== 独立/特定分流规则 ====================
   - DOMAIN-KEYWORD,synology,DIRECT
+  - DOMAIN-KEYWORD,quickconnect,DIRECT
   - DOMAIN-KEYWORD,callofduty,游戏平台
   - DOMAIN-SUFFIX,cod-assets.cdn.callofduty.com,游戏平台
   - DOMAIN-SUFFIX,genesis.stun.us.demonware.net,游戏平台
