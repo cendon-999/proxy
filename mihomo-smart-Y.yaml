@@ -197,7 +197,7 @@ dns:
     'rule-set:telegram': *proxy-dns
     'rule-set:media': *proxy-dns
     'rule-set:google': *proxy-dns
-    'rule-set:Games': *proxy-dns
+    'rule-set:Games': *direct-dns
     'rule-set:trackerslist': *proxy-dns
     'rule-set:proxy-lite': *proxy-dns
     'rule-set:cn': *direct-dns
