@@ -20,8 +20,6 @@ proxy-providers:
 use: &use { use: [优质服务商,次优服务商,备用服务商,聚合服务商,落地服务商] }
 
 
-
-
 ipv6: true
 allow-lan: false
 bind-address: '*'
@@ -82,6 +80,7 @@ rule-providers:
   telegram: { <<: *domain, url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.mrs', path: ./rules/telegram.mrs }
   media: { <<: *domain, url: 'https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/media.mrs', path: ./rules/media.mrs }
   google: { <<: *domain, url: 'https://raw.githubusercontent.com/echs-top/proxy/main/mrs/domain/google.mrs', path: ./rules/google.mrs }
+  Games: { <<: *domain, url: 'https://github.com/666OS/rules/raw/release/mihomo/domain/Games.mrs', path: ./rules/Games.mrs }
   trackerslist: { <<: *domain, url: 'https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/trackerslist.mrs', path: ./rules/trackerslist.mrs }
   proxy-lite: { <<: *domain, url: 'https://raw.githubusercontent.com/echs-top/proxy/main/mrs/domain/proxy-lite.mrs', path: ./rules/proxy-lite.mrs }
   cn: { <<: *domain, url: 'https://raw.githubusercontent.com/echs-top/proxy/main/mrs/domain/cn.mrs', path: ./rules/cn.mrs }
@@ -104,6 +103,7 @@ rules:
   - RULE-SET,telegram,TELEGRAM
   - RULE-SET,media,国外媒体
   - RULE-SET,google,GOOGLE
+  - RULE-SET,Games,游戏平台
   - RULE-SET,trackerslist,TRACKER
   - RULE-SET,proxy-lite,代理连接
   - RULE-SET,cn,直接连接
@@ -115,16 +115,17 @@ rules:
 
    # ==================== 独立/特定分流规则 ====================
   - DOMAIN-KEYWORD,synology,DIRECT
-  - DOMAIN-KEYWORD,callofduty,游戏节点
-  - DOMAIN-SUFFIX,cod-assets.cdn.callofduty.com,游戏节点
-  - DOMAIN-SUFFIX,genesis.stun.us.demonware.net,游戏节点
-  - DOMAIN-SUFFIX,genesis.stun.eu.demonware.net,游戏节点
-  - DOMAIN-SUFFIX,sapphire-lobby.prod.demonware.net,游戏节点
-  - DOMAIN-SUFFIX,ingest.datax.activision.com,游戏节点
+  - DOMAIN-KEYWORD,callofduty,游戏平台
+  - DOMAIN-SUFFIX,cod-assets.cdn.callofduty.com,游戏平台
+  - DOMAIN-SUFFIX,genesis.stun.us.demonware.net,游戏平台
+  - DOMAIN-SUFFIX,genesis.stun.eu.demonware.net,游戏平台
+  - DOMAIN-SUFFIX,sapphire-lobby.prod.demonware.net,游戏平台
+  - DOMAIN-SUFFIX,ingest.datax.activision.com,游戏平台
   - DOMAIN-KEYWORD,hinet.net,台湾|智能选择
   - DOMAIN-KEYWORD,hoy.tv,香港|智能选择
   - DOMAIN-KEYWORD,rthktv,香港|智能选择
   - DOMAIN-KEYWORD,iill,香港|智能选择
+  - DOMAIN-SUFFIX,gst.prod.dl.playstation.net,DIRECT
   - DOMAIN-KEYWORD,fengshows,DIRECT
   #- DOMAIN-KEYWORD,miguvideo,香港智能
   # --- PikPak (屏蔽地区检测/直连下载) ---
@@ -132,9 +133,9 @@ rules:
   - DOMAIN,access.mypikpak.net,REJECT
   - DOMAIN,access.pikpak.me,REJECT
   - DOMAIN,access.pikpakdrive.com,REJECT
-  - DOMAIN-KEYWORD,dl-a10b-,直接连接
-  - DOMAIN-KEYWORD,dl-z01a-,直接连接
-  - DOMAIN-REGEX,^dl-[A-Za-z0-9-]+\.mypikpak\.com$,直接连接
+  - DOMAIN-KEYWORD,dl-a10b-,DIRECT
+  - DOMAIN-KEYWORD,dl-z01a-,DIRECT
+  - DOMAIN-REGEX,^dl-[A-Za-z0-9-]+\.mypikpak\.com$,DIRECT
   
   # 极其激进的bt/tracker兜底
   - DST-PORT,10000-65535,TRACKER
@@ -179,6 +180,7 @@ dns:
     - RULE-SET,telegram,fake-ip
     - RULE-SET,media,fake-ip
     - RULE-SET,google,fake-ip
+    - RULE-SET,Games,fake-ip
     - RULE-SET,trackerslist,fake-ip
     - RULE-SET,proxy-lite,fake-ip
     - RULE-SET,cn,real-ip
@@ -194,6 +196,7 @@ dns:
     'rule-set:telegram': *proxy-dns
     'rule-set:media': *proxy-dns
     'rule-set:google': *proxy-dns
+    'rule-set:Games': *proxy-dns
     'rule-set:trackerslist': *proxy-dns
     'rule-set:proxy-lite': *proxy-dns
     'rule-set:cn': *direct-dns
@@ -222,6 +225,7 @@ proxy-groups:
   - { name: 国外媒体, <<: *dl, icon: 'https://mihomo.echs.top/img/icon/Emby.webp' }
   - { name: GOOGLE, <<: *dl, icon: 'https://mihomo.echs.top/img/icon/Google.webp' }
   - { name: TRACKER, <<: *dl, icon: 'https://mihomo.echs.top/img/icon/Download_2.webp' }
+  - { name: 游戏平台,   <<: *dl, icon: 'https://mihomo.echs.top/img/icon/Game.webp'}
   - { name: 最低延迟, type: url-test, tolerance: 30, <<: *use, hidden: true, icon: 'https://mihomo.echs.top/img/icon/Fast.webp' }
   - { name: 香港|智能选择, <<: *smart, filter: '(?i)🇭🇰|香港|\bHK\b|\bhongkong\b|\bhong\s?kong\b', icon: 'https://mihomo.echs.top/img/flags/hk.svg' }
   - { name: 台湾|智能选择, <<: *smart, filter: '(?i)🇹🇼|台湾|\bTW\b|\btaiwan\b', icon: 'https://mihomo.echs.top/img/flags/tw.svg' }
@@ -235,3 +239,12 @@ proxy-groups:
   - { name: 法国|智能选择, <<: *smart, filter: '(?i)🇫🇷|法国|\bFR\b', icon: 'https://mihomo.echs.top/img/flags/fr.svg' }
   - { name: 俄罗斯|智能选择, <<: *smart, filter: '(?i)ru|俄罗斯|\bRU\b|\brussian?\b', icon: 'https://mihomo.echs.top/img/flags/ru.svg' }
   - { name: GLOBAL, type: select, proxies: [最低延迟,香港|智能选择,台湾|智能选择,新加坡|智能选择,日本|智能选择,韩国|智能选择,美国|智能选择,加拿大|智能选择,德国|智能选择,英国|智能选择,法国|智能选择,俄罗斯|智能选择,代理连接,代理DNS,人机验证,国外AI,TELEGRAM,国外媒体,GOOGLE,TRACKER], include-all-providers: true, hidden: true, icon: 'https://mihomo.echs.top/img/icon/Globefish.webp' }
+
+  # 中转服务层 - LoadBalance负载均衡，提供中转服务提升连通性，选用一个或多个服务商做中转，比如 优质服务商，可通过正则表达式，过滤掉不需要的节点，使用时请修改
+  - {name: 游戏节点, type: select, include-all: true, 
+     filter: '^(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author)).*$', 
+     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Global.png}
+  - {name: 自建/家宽节点, type: select, include-all: true, filter: "(?=.*(?i)(自建|home))", icon: https://pub-8feead0908f649a8b94397f152fb9cba.r2.dev/private_node.png}
+  - {name: 中转服务, type: select, include-all: true,
+     filter: '^(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author)).*$',
+     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin.png}
