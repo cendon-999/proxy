@@ -138,7 +138,7 @@ rules:
   - DOMAIN-REGEX,^dl-[A-Za-z0-9-]+\.mypikpak\.com$,DIRECT
   
   # 极其激进的bt/tracker兜底
-  - DST-PORT,10000-65535,TRACKER
+  #- DST-PORT,10000-65535,TRACKER
   - MATCH,代理连接
 hosts:
   dns.alidns.com: [223.5.5.5,223.6.6.6,'2400:3200::1','2400:3200:baba::1']
