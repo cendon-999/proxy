@@ -134,7 +134,7 @@ rule-providers:
   download: { <<: *domain, url: 'https://raw.githubusercontent.com/echs-top/proxy/main/mrs/domain/download.mrs', path: ./rules/download.mrs }
   safe: { <<: *domain, url: 'https://raw.githubusercontent.com/echs-top/proxy/main/mrs/domain/safe.mrs', path: ./rules/safe.mrs }
   google: { <<: *domain, url: 'https://raw.githubusercontent.com/echs-top/proxy/main/mrs/domain/google.mrs', path: ./rules/google.mrs }
-  Games: { <<: *domain, url: 'https://github.com/666OS/rules/raw/release/mihomo/domain/Games.mrs', path: ./rules/Games.mrs }
+  #Games: { <<: *domain, url: 'https://github.com/666OS/rules/raw/release/mihomo/domain/Games.mrs', path: ./rules/Games.mrs }
   media: { <<: *domain, url: 'https://raw.githubusercontent.com/echs-top/proxy/main/mrs/domain/media.mrs', path: ./rules/media.mrs }
   proxy-lite: { <<: *domain, url: 'https://raw.githubusercontent.com/echs-top/proxy/main/mrs/domain/proxy-lite.mrs', path: ./rules/proxy-lite.mrs }
   direct-lite: { <<: *domain, url: 'https://raw.githubusercontent.com/echs-top/proxy/main/mrs/domain/direct-lite.mrs', path: ./rules/direct-lite.mrs }
@@ -149,12 +149,12 @@ rules:
   # ==================== 独立/特定分流规则 ====================
   - DOMAIN-KEYWORD,synology,直接连接
   - DOMAIN-KEYWORD,quickconnect,直接连接
-  - DOMAIN-KEYWORD,callofduty,游戏平台
-  - DOMAIN-SUFFIX,cod-assets.cdn.callofduty.com,游戏平台
-  - DOMAIN-SUFFIX,genesis.stun.us.demonware.net,游戏平台
-  - DOMAIN-SUFFIX,genesis.stun.eu.demonware.net,游戏平台
-  - DOMAIN-SUFFIX,sapphire-lobby.prod.demonware.net,游戏平台
-  - DOMAIN-SUFFIX,ingest.datax.activision.com,游戏平台
+  - DOMAIN-KEYWORD,callofduty,游戏节点
+  - DOMAIN-SUFFIX,cod-assets.cdn.callofduty.com,游戏节点
+  - DOMAIN-SUFFIX,genesis.stun.us.demonware.net,游戏节点
+  - DOMAIN-SUFFIX,genesis.stun.eu.demonware.net,游戏节点
+  - DOMAIN-SUFFIX,sapphire-lobby.prod.demonware.net,游戏节点
+  - DOMAIN-SUFFIX,ingest.datax.activision.com,游戏节点
   - DOMAIN-KEYWORD,hinet.net,台湾|智能选择¹
   - DOMAIN-KEYWORD,hoy.tv,香港|智能选择¹
   - DOMAIN-KEYWORD,rthktv,香港|智能选择¹
@@ -179,7 +179,7 @@ rules:
   - SUB-RULE,(RULE-SET,download),sub-download
   - SUB-RULE,(RULE-SET,safe),sub-safe
   - SUB-RULE,(RULE-SET,google),sub-google
-  - SUB-RULE,(RULE-SET,Games),sub-Games
+  #- SUB-RULE,(RULE-SET,Games),sub-Games
   - SUB-RULE,(RULE-SET,media),sub-media
   - SUB-RULE,(RULE-SET,proxy-lite),sub-proxy
   - RULE-SET,direct-lite,直接连接
@@ -195,7 +195,7 @@ sub-rules:
   sub-download: [*quic,'MATCH,下载相关']
   sub-safe: [*quic,'MATCH,风控安全']
   sub-google: [*quic,'MATCH,GOOGLE']
-  sub-Games: [*quic,'MATCH,游戏平台']
+  #sub-Games: [*quic,'MATCH,游戏平台']
   sub-media: [*quic,'MATCH,海外媒体']
   sub-proxy: [*quic,'MATCH,代理连接']
 proxies: [{ name: IPV4优先, type: direct, udp: true, ip-version: ipv4-prefer },{ name: IPV6优先, type: direct, udp: true, ip-version: ipv6-prefer },{ name: 仅IPV4, type: direct, udp: true, ip-version: ipv4 },{ name: 仅IPV6, type: direct, udp: true, ip-version: ipv6 }]
