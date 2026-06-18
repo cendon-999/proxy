@@ -219,7 +219,7 @@ proxy-groups:
   - { name: 代理QUIC, type: select, proxies: [PASS-RULE,REJECT], icon: 'https://mihomo.echs.top/img/Hand-Painted-icon/Google_Suite/Admin.png' }
   - { name: TELEGRAM, <<: *dl, icon: 'https://mihomo.echs.top/img/Hand-Painted-icon/Social_Media/Telegram.png' }
   - { name: 国外AI, <<: *dl, icon: 'https://mihomo.echs.top/img/Hand-Painted-icon/Fitness/Chat.png' }
-  - { name: 游戏平台,   <<: *dl, icon: 'https://mihomo.echs.top/img/Hand-Painted-icon/Universal/Game.png'}
+  #- { name: 游戏平台,   <<: *dl, icon: 'https://mihomo.echs.top/img/Hand-Painted-icon/Universal/Game.png'}
   - { name: 下载相关, <<: *dl, icon: 'https://mihomo.echs.top/img/Hand-Painted-icon/Google_Suite/Drive.png' }
   - { name: 风控安全, <<: *dl, icon: 'https://mihomo.echs.top/img/Hand-Painted-icon/Google_Suite/Account.png' }
   - { name: GOOGLE, <<: *dl, icon: 'https://mihomo.echs.top/img/Hand-Painted-icon/Google_Suite/Google.png' }
