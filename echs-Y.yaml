@@ -113,7 +113,7 @@ dns:
   nameserver-policy:
     'rule-set:ads': ['rcode://name_error']
     'rule-set:proxy@direct': *direct-dns
-    'rule-set:ai,download,safe,google,Games,media,proxy-lite': *fakeip-dns
+    'rule-set:ai,download,safe,google,media,proxy-lite': *fakeip-dns
     'rule-set:direct-lite,dnsmasq-china-lite': *direct-dns
   direct-nameserver: *direct-dns
   direct-nameserver-follow-policy: true
@@ -123,7 +123,7 @@ sniffer:
   parse-pure-ip: true
   override-destination: false
   sniff: { HTTP: { ports: [80,8080-8880], override-destination: true }, TLS: { ports: [443,8443] }, QUIC: { ports: [443,8443] } }
-  skip-domain: ['rule-set:ads,proxy@direct,ai,download,safe,google,Games,media,proxy-lite,direct-lite,dnsmasq-china-lite']
+  skip-domain: ['rule-set:ads,proxy@direct,ai,download,safe,google,media,proxy-lite,direct-lite,dnsmasq-china-lite']
   skip-src-address: ['rule-set:telegram_ip,safe_ip,google_ip,media_ip,direct_ip']
 ip: &ip { type: http, interval: 86400, proxy: 代理连接, behavior: ipcidr, format: mrs }
 domain: &domain { type: http, interval: 86400, proxy: 代理连接, behavior: domain, format: mrs }
