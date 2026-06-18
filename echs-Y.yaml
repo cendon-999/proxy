@@ -172,14 +172,14 @@ jp: &jp { filter: '(?i)🇯🇵|日本|\\bJP\\b|\\bjapan\\b', icon: 'https://mih
 us: &us { filter: '(?i)🇺🇸|美国|\\bUS\\b|\\bunitedstates\\b|\\bunited\s?states\\b', icon: 'https://mihomo.echs.top/img/Hand-Painted-icon/Rounded_Rectangle/United_States.png' }
 de: &de { filter: '(?i)🇩🇪|德国|\\bDE\\b|\\bgermany\\b', icon: 'https://mihomo.echs.top/img/Hand-Painted-icon/Rounded_Rectangle/Germany.png' }
 uk: &uk { filter: '(?i)🇬🇧|英国|\\bUK\\b|\\bGB\\b|\\bunitedkingdom\\b|\\bunited\s?kingdom\\b', icon: 'https://mihomo.echs.top/img/Hand-Painted-icon/Rounded_Rectangle/United_Kingdom.png' }
-ru: &ru { filter: '(?i)ru|俄罗斯|\\bRU\\b|\\brussian\\b', icon: 'https://mihomo.echs.top/img/Hand-Painted-icon/Rounded_Rectangle/Russian.png' }
+ru: &ru { filter: '(?i)ru|俄罗斯|\\bRU\\b|\\brussian\\b', icon: 'https://mihomo.echs.top/img/Hand-Painted-icon/Rounded_Rectangle/Russia.png' }
 auto: &auto { filter: '(?i)🇭🇰|香港|\\bHK\\b|\\bhongkong\\b|\\bhong\s?kong\\b|🇸🇬|新加坡|狮城|\\bSG\\b|\\bsingapore\\b|🇯🇵|日本|\\bJP\\b|\\bjapan\\b|🇺🇸|美国|\\bUS\\b|\\bunitedstates\\b|\\bunited\s?states\\b', icon: 'https://mihomo.echs.top/img/Hand-Painted-icon/Universal/RoundRobin.png' }
 test: &test { type: url-test, tolerance: 30, empty-fallback: REJECT, hidden: true, icon: 'https://mihomo.echs.top/img/Hand-Painted-icon/Universal/Auto_Speed.png' }
 bal: &bal { type: load-balance, strategy: round-robin, empty-fallback: REJECT, hidden: true }
 smart: &smart { type: smart, strategy: sticky-sessions, uselightgbm: true, collectdata: false, sample-rate: 1, prefer-asn: false, empty-fallback: REJECT, hidden: true }
-dl: &dl { type: select, proxies: [代理连接,直接连接,最低延迟¹,最低延迟²,智能选择¹,智能选择²,香港|智能选择¹,香港|智能选择²,台湾|智能选择¹,台湾|智能选择²,新加坡|智能选择¹,新加坡|智能选择²,日本|智能选择¹,日本|智能选择²,美国|智能选择¹,美国|智能选择²,德国|智能选择¹,德国|智能选择²,英国|智能选择¹,英国|智能选择²,俄罗斯|智能选择¹,俄罗斯|智能选择²,香港|轮询下载,新加坡|轮询下载,日本|轮询下载,美国|轮询下载,自建/家宽节点], <<: *use }
+dl: &dl { type: select, proxies: [代理连接,直接连接,最低延迟¹,最低延迟²,智能选择¹,智能选择²,香港|智能选择¹,香港|智能选择²,台湾|智能选择¹,台湾|智能选择²,新加坡|智能选择¹,新加坡|智能选择²,日本|智能选择¹,日本|智能选择²,美国|智能选择¹,美国|智能选择²,德国|智能选择¹,德国|智能选择²,英国|智能选择¹,英国|智能选择²,俄罗斯|智能选择¹,俄罗斯|智能选择²,香港|轮询下载,新加坡|轮询下载,日本|轮询下载,美国|轮询下载,游戏节点,自建/家宽节点], <<: *use }
 proxy-groups:
-  - { name: 代理连接, type: select, proxies: [最低延迟¹,最低延迟²,智能选择¹,智能选择²,香港|智能选择¹,香港|智能选择²,台湾|智能选择¹,台湾|智能选择²,新加坡|智能选择¹,新加坡|智能选择²,日本|智能选择¹,日本|智能选择²,美国|智能选择¹,美国|智能选择²,德国|智能选择¹,德国|智能选择²,英国|智能选择¹,英国|智能选择²,俄罗斯|智能选择¹,俄罗斯|智能选择²,香港|轮询下载,新加坡|轮询下载,日本|轮询下载,美国|轮询下载,自建/家宽节点], <<: *use, icon: 'https://mihomo.echs.top/img/Hand-Painted-icon/Universal/StreamingSE.png' }
+  - { name: 代理连接, type: select, proxies: [最低延迟¹,最低延迟²,智能选择¹,智能选择²,香港|智能选择¹,香港|智能选择²,台湾|智能选择¹,台湾|智能选择²,新加坡|智能选择¹,新加坡|智能选择²,日本|智能选择¹,日本|智能选择²,美国|智能选择¹,美国|智能选择²,德国|智能选择¹,德国|智能选择²,英国|智能选择¹,英国|智能选择²,俄罗斯|智能选择¹,俄罗斯|智能选择²,香港|轮询下载,新加坡|轮询下载,日本|轮询下载,美国|轮询下载,游戏节点,自建/家宽节点], <<: *use, icon: 'https://mihomo.echs.top/img/Hand-Painted-icon/Universal/StreamingSE.png' }
   - { name: 直接连接, type: select, proxies: [DIRECT,IPV4优先,IPV6优先,仅IPV4,仅IPV6], icon: 'https://mihomo.echs.top/img/Hand-Painted-icon/Accommodation/Online_Booking.png' }
   - { name: 代理DNS, <<: *dl, icon: 'https://mihomo.echs.top/img/Hand-Painted-icon/Universal/Streaming.png' }
   - { name: 代理QUIC, type: select, proxies: [PASS-RULE,REJECT], icon: 'https://mihomo.echs.top/img/Hand-Painted-icon/Google_Suite/Admin.png' }
@@ -215,4 +215,7 @@ proxy-groups:
   - { name: 美国|轮询下载, <<: [*bal,*download,*us] }
   - { name: GLOBAL, type: select, proxies: [最低延迟¹,最低延迟²,智能选择¹,智能选择²,香港|智能选择¹,香港|智能选择²,台湾|智能选择¹,台湾|智能选择²,新加坡|智能选择¹,新加坡|智能选择²,日本|智能选择¹,日本|智能选择²,美国|智能选择¹,美国|智能选择²,德国|智能选择¹,德国|智能选择²,英国|智能选择¹,英国|智能选择²,俄罗斯|智能选择¹,俄罗斯|智能选择²,香港|轮询下载,新加坡|轮询下载,日本|轮询下载,美国|轮询下载,代理连接,直接连接,代理DNS,代理QUIC,TELEGRAM,国外AI,下载相关,风控安全,GOOGLE,海外媒体], include-all-providers: true, hidden: true, icon: 'https://mihomo.echs.top/img/Hand-Painted-icon/Google_Suite/Browser.png' }
 
+  - {name: 游戏节点, type: select, include-all: true, 
+     filter: '^(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author)).*$', 
+     icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Global.png}
   - {name: 自建/家宽节点, type: select, include-all: true, filter: "(?=.*(?i)(自建|home))", icon: https://pub-8feead0908f649a8b94397f152fb9cba.r2.dev/private_node.png}
