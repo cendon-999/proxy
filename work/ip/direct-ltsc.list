@@ -1,0 +1,6 @@
++ list direct.list
++ list /work/ltsc/direct_ip.list
+- list telegram.list
+- list google.list
+- list safe.list
+- list media.list

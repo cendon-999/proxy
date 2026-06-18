@@ -1,60 +1,184 @@
-> 重构workflows，请更新模板(2026.05.26)
+### 前言/声明
 
-### 更新
+本项目仅供技术交流与学术研究使用，模板跟随内核维护更新。
 
-跟随mihomo版本更新……
+欢迎issues共同维护(如增加/删除分流域名、增加广告域名/删除误杀、更多规则建议等等)
 
-### 模板
+**自用优先**、TUN/VPN、激进设置、完善分流、**多订阅组**、地区策略
 
-[mihomo.yaml](https://raw.githubusercontent.com/echs-top/proxy/heads/main/mihomo.yaml)、[mihomo_smart.yaml](https://raw.githubusercontent.com/echs-top/proxy/heads/main/mihomo_smart.yaml)
+### 模板 (多订阅)
+
+[mihomo.yaml](https://raw.githubusercontent.com/echs-top/proxy/refs/heads/main/mihomo.yaml)、[mihomo_smart.yaml](https://raw.githubusercontent.com/echs-top/proxy/refs/heads/main/mihomo_smart.yaml)
+
+### 脚本 (单订阅)
+[https://mihomo.echs.top/mihomo.js](https://mihomo.echs.top/mihomo.js)
+
+[https://mihomo.echs.top/mihomo_smart.js](https://mihomo.echs.top/mihomo_smart.js)
 
 ### 预览
 
-| ![](https://raw.githubusercontent.com/echs-top/proxy/main/img/zashboard.webp) | ![](https://raw.githubusercontent.com/echs-top/proxy/main/img/zashboard2.webp) |
+| ![](img/zashboard5.webp) | ![](img/zashboard6.webp) |
 | :---: | :---: |
 
 ### 占用
 
 裸核：约40～150MB(smart分支占用偏高)
 
-MRS：约980KB(含DNS分流dnsmasq-china-lite约480KB)
+MRS：`939.11KB` `170156` (含dnsmasq-china DNS分流规则)
 
-### 备注
+### 更新日志
 
-自用优先、TUN/VPN、地区策略、完善设置、严谨分流
+[Github Commits](https://github.com/echs-top/proxy/commits/main)、[Telegram Channel](https://t.me/echsfxy_proxy)
 
-规则：[MetaCubeX](https://github.com/MetaCubeX/meta-rules-dat)(部分)、[DustinWin](https://github.com/DustinWin/ruleset_geodata)(部分)、ads([秋风](https://awavenue.top)+[217heidai](https://github.com/217heidai/adblockfilters)+[PATREON](https://pgl.yoyo.org/adservers/))、cn-lite([cn-lite](https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/cn-lite.list)+[备案域名](https://www.nodeseek.com/post-464238-1))、cn(详见[合并去重排除](https://github.com/echs-top/proxy/blob/main/work/domain/cn.list))、proxy([proxy](https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/proxy.list)+[github](https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.list))、proxy-lite(详见[合并去重排除](https://github.com/echs-top/proxy/blob/main/work/domain/proxy-lite.list))、[telegram_ip](https://core.telegram.org/resources/cidr.txt)、[dnsmasq-china](https://github.com/felixonmars/dnsmasq-china-list)、dnsmasq-china-lite(详见[合并去重排除](https://github.com/echs-top/proxy/blob/main/work/domain/dnsmasq-china-lite.list))、google([google](https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.list)-[自用排除](https://github.com/echs-top/proxy/blob/main/work/list/google-direct_domain.list))、[人机验证](https://github.com/echs-top/proxy/blob/main/list/domain/captcha.list)
+### Zashboard
 
-注意：cn、proxy-lite、dnsmasq-china-lite为此模板定制(减少规则量)，若要改动规则请替换为cn-lite、proxy、dnsmasq-china。此外不建议将cn与proxy-lite调换顺序！
+增加了霞鹜文楷，更新至 `3.10.1`
 
-图标：[flag-icons](https://github.com/lipis/flag-icons)、[HOMOMIX](https://github.com/Vbaethon/HOMOMIX) ===> 使用[cloudflare](https://cloudflare.com)/[vercel](https://vercel.com)/[netlify](https://netlify.com)混合加速
+dist.zip `11.81MB`
+
+[https://github.com/echs-top/proxy/releases/download/zashboard/dist.zip](https://github.com/echs-top/proxy/releases/download/zashboard/dist.zip)
+
+dist-lxgwwenkai-only.zip `5.44MB`
+
+[https://github.com/echs-top/proxy/releases/download/zashboard/dist-lxgwwenkai-only.zip](https://github.com/echs-top/proxy/releases/download/zashboard/dist-lxgwwenkai-only.zip)
+
+### 规则
+
+可引用规则：
+
+- ads：[秋风](https://awavenue.top) + [217heidai](https://github.com/217heidai/adblockfilters)+[PATREON](https://pgl.yoyo.org/adservers/) + [增加](https://github.com/echs-top/proxy/blob/main/work/list/ad_add_domain.list) - [删除](https://github.com/echs-top/proxy/blob/main/work/list/ad_del_domain.list)  
+  较精简的国内外去广告域名规则  
+  Update：`2026.06.18` `8559`  
+  规则链接：[list](https://raw.githubusercontent.com/echs-top/proxy/main/list/domain/ads.list) / [mrs](https://raw.githubusercontent.com/echs-top/proxy/main/mrs/domain/ads.mrs)
+
+- proxy@direct：[补充](https://github.com/echs-top/proxy/blob/main/work/list/proxy%40direct_domain.list) + [google-cn](https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/google-cn.list) + [apple-cn](https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/apple-cn.list) - '+.cn'  
+  国外域名前置直连规则，如FCM  
+  Update：`2026.06.09` `313`  
+  规则链接：[list](https://raw.githubusercontent.com/echs-top/proxy/main/list/domain/proxy@direct.list) / [mrs](https://raw.githubusercontent.com/echs-top/proxy/main/mrs/domain/proxy@direct.mrs)
+
+- ai：[ai](https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/ai.list) + [category-ai-!cn](https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.list) - [category-ai-cn](https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-cn.list)  
+  国外AI域名规则  
+  Update：`2026.06.06` `172`  
+  规则链接：[list](https://raw.githubusercontent.com/echs-top/proxy/main/list/domain/ai.list) / [mrs](https://raw.githubusercontent.com/echs-top/proxy/main/mrs/domain/ai.mrs)
+
+- download：[补充](https://github.com/echs-top/proxy/blob/main/work/list/download_domain.list) + [pikpak](https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/pikpak.list) + [docker](https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/docker.list)  
+  下载相关域名规则  
+  Update：`2026.06.18` `32`  
+  规则链接：[list](https://raw.githubusercontent.com/echs-top/proxy/main/list/domain/download.list) / [mrs](https://raw.githubusercontent.com/echs-top/proxy/main/mrs/domain/download.mrs)
+
+- safe：[补充](https://github.com/echs-top/proxy/blob/main/work/list/safe_domain.list) + [category-finance](https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-finance.list) - [category-finance@cn](https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-finance@cn.list) + [twitter](https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/twitter.list) + [paypal](https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/paypal.list) + [stripe](https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/stripe.list) + [category-cryptocurrency](https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-cryptocurrency.list) + [reddit](https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/reddit.list) - '+.cn'  
+  风控、支付、节点高要求域名规则  
+  Update：`2026.06.15` `1080`  
+  规则链接：[list](https://raw.githubusercontent.com/echs-top/proxy/main/list/domain/safe.list) / [mrs](https://raw.githubusercontent.com/echs-top/proxy/main/mrs/domain/safe.mrs)
+
+- google：[google](https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.list) - ([google-cn](https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/google-cn.list) - '+.cn') - [youtube](https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.list)  
+  GOOGLE域名规则  
+  Update：`2026.06.14` `626`  
+  规则链接：[list](https://raw.githubusercontent.com/echs-top/proxy/main/list/domain/google.list) / [mrs](https://raw.githubusercontent.com/echs-top/proxy/main/mrs/domain/google.mrs)
+
+- media：[category-media](https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-media.list) - [category-media-cn](https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-media-cn.list) + [netflix](https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.list) + [youtube](https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.list) - '+.cn'  
+  海外媒体规则  
+  Update：`2026.06.14` `1772`  
+  规则链接：[list](https://raw.githubusercontent.com/echs-top/proxy/main/list/domain/media.list) / [mrs](https://raw.githubusercontent.com/echs-top/proxy/main/mrs/domain/media.mrs)
+
+- proxy：[proxy](https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/proxy.list) + ([tld-not-cn](https://raw.githubusercontent.com/wwqgtxx/clash-rules/release/tld-not-cn.list) - [删除](https://github.com/echs-top/proxy/blob/main/work/list/tld-not-cn@del_domain.list)) +[github api](https://api.github.com/meta) + [增加](https://github.com/echs-top/proxy/blob/main/work/list/proxy_add_domain.list) - [删除](https://github.com/echs-top/proxy/blob/main/work/list/proxy_del_domain.list)  
+  代理域名规则  
+  Update：`2026.06.18` `20464`  
+  规则链接：[list](https://raw.githubusercontent.com/echs-top/proxy/main/list/domain/proxy.list) / [mrs](https://raw.githubusercontent.com/echs-top/proxy/main/mrs/domain/proxy.mrs)
+
+- cn：[cn-lite](https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/cn-lite.list) + [备案域名](https://www.nodeseek.com/post-464238-1)  
+  国内域名规则  
+  Update：`2026.06.18` `31463`  
+  规则链接：[list](https://raw.githubusercontent.com/echs-top/proxy/main/list/domain/cn.list) / [mrs](https://raw.githubusercontent.com/echs-top/proxy/main/mrs/domain/cn.mrs)
+
+- direct：cn + [games-cn](https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/games-cn.list) + [apple-cn](https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/apple-cn.list) + [microsoft-cn](https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/microsoft-cn.list) + [private](https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/private.list) + [增加](https://github.com/echs-top/proxy/blob/main/work/list/direct_add_domain.list) - [删除](https://github.com/echs-top/proxy/blob/main/work/list/direct_del_domain.list)  
+  直连域名规则  
+  Update：`2026.06.18` `31848`  
+  规则链接：[list](https://raw.githubusercontent.com/echs-top/proxy/main/list/domain/direct.list) / [mrs](https://raw.githubusercontent.com/echs-top/proxy/main/mrs/domain/direct.mrs)
+
+- dnsmasq-china：[dnsmasq-china](https://github.com/felixonmars/dnsmasq-china-list)  
+  dnsmasq-china域名规则，可作为DNS分流补充规则  
+  Update：`2026.06.17` `112069`  
+  规则链接：[list](https://raw.githubusercontent.com/echs-top/proxy/main/list/domain/dnsmasq-china.list) / [mrs](https://raw.githubusercontent.com/echs-top/proxy/main/mrs/domain/dnsmasq-china.mrs)
+
+- telegram_ip：[telegram api](https://core.telegram.org/resources/cidr.txt)  
+  TELEGRAM IP规则  
+  Update：`2026.06.01` `11`  
+  规则链接：[list](https://raw.githubusercontent.com/echs-top/proxy/main/list/ip/telegram.list) / [mrs](https://raw.githubusercontent.com/echs-top/proxy/main/mrs/ip/telegram.mrs)
+
+- enhanced-FaaS-in-China_ip：[enhanced-FaaS-in-China](https://github.com/xingpingcn/enhanced-FaaS-in-China)  
+  少量vercel/netlify/cloudflare优选IP规则  
+  Update：`2026.06.18` `19`  
+  规则链接：[list](https://raw.githubusercontent.com/echs-top/proxy/main/list/ip/enhanced-FaaS-in-China.list) / [mrs](https://raw.githubusercontent.com/echs-top/proxy/main/mrs/ip/enhanced-FaaS-in-China.mrs)
+
+- safe_ip：[twitter](https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/twitter.list)  
+  风控、支付、节点高要求IP规则  
+  Update：`2026.06.14` `21`  
+  规则链接：[list](https://raw.githubusercontent.com/echs-top/proxy/main/list/ip/safe.list) / [mrs](https://raw.githubusercontent.com/echs-top/proxy/main/mrs/ip/safe.mrs)
+
+- media_ip：[netflix](https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.list)  
+  海外媒体IP规则  
+  Update：`2026.06.14` `83`  
+  规则链接：[list](https://raw.githubusercontent.com/echs-top/proxy/main/list/ip/media.list) / [mrs](https://raw.githubusercontent.com/echs-top/proxy/main/mrs/ip/media.mrs)
+
+- google_ip：[google api](https://www.gstatic.com/ipranges/goog.txt)  
+  GOOGLE IP规则  
+  Update：`2026.06.14` `111`  
+  规则链接：[list](https://raw.githubusercontent.com/echs-top/proxy/main/list/ip/google.list) / [mrs](https://raw.githubusercontent.com/echs-top/proxy/main/mrs/ip/google.mrs)
+
+- cn_ip：[china-operator-ip](https://gaoyifan.github.io/china-operator-ip/china46.txt) + [苍狼山庄](https://ispip.clang.cn) + [OpenIPDB](https://raw.githubusercontent.com/metowolf/iplist/master/data/special/china.txt) + [zhufengme/block_cn_files](https://raw.githubusercontent.com/zhufengme/block_cn_files/master/cn_ip_list.txt)  
+  国内IP规则  
+  Update：`2026.06.18` `8521`  
+  规则链接：[list](https://raw.githubusercontent.com/echs-top/proxy/main/list/ip/cn.list) / [mrs](https://raw.githubusercontent.com/echs-top/proxy/main/mrs/ip/cn.mrs)
+
+- direct_ip：cn_ip + 'enhanced-FaaS-in-China_ip' + [private_ip](https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/privateip.list)  
+  直连IP规则  
+  Update：`2026.06.18` `8563`  
+  规则链接：[list](https://raw.githubusercontent.com/echs-top/proxy/main/list/ip/direct.list) / [mrs](https://raw.githubusercontent.com/echs-top/proxy/main/mrs/ip/direct.mrs)
+
+谨慎引用！lite规则：
+
+- proxy-lite：proxy - ads - google - media  
+  精简代理域名规则  
+  Update：`2026.06.18` `18832`  
+  规则链接：[list](https://raw.githubusercontent.com/echs-top/proxy/main/list/domain/proxy-lite.list) / [mrs](https://raw.githubusercontent.com/echs-top/proxy/main/mrs/domain/proxy-lite.mrs)
+
+- direct-lite：direct - ads - proxy@direct - proxy  
+  精简直连域名规则  
+  Update：`2026.06.18` `31329`  
+  规则链接：[list](https://raw.githubusercontent.com/echs-top/proxy/main/list/domain/direct-lite.list) / [mrs](https://raw.githubusercontent.com/echs-top/proxy/main/mrs/domain/direct-lite.mrs)
+
+- dnsmasq-china-lite：'dnsmasq-china' - ads - proxy@direct - proxy - direct  
+  精简dnsmasq-china域名规则  
+  Update：`2026.06.18` `98652`  
+  规则链接：[list](https://raw.githubusercontent.com/echs-top/proxy/main/list/domain/dnsmasq-china-lite.list) / [mrs](https://raw.githubusercontent.com/echs-top/proxy/main/mrs/domain/dnsmasq-china-lite.mrs)
+
+更多规则推荐：
+
+- [MetaCubeX/meta-rules-dat](https://github.com/MetaCubeX/meta-rules-dat)
+- [DustinWin/ruleset_geodata](https://github.com/DustinWin/ruleset_geodata)
+- [wwqgtxx/clash-rules](https://github.com/wwqgtxx/clash-rules)
+
+### 引用参考
+
+图标：[lipis/flag-icons](https://github.com/lipis/flag-icons)、[Semporia/Hand-Painted-icon](https://github.com/Semporia/Hand-Painted-icon)、[Vbaethon/HOMOMIX](https://github.com/Vbaethon/HOMOMIX)
 
 DOH: 直连([阿里DNS](https://www.aliyun.com/product/dns)+[腾讯DNS](https://www.dnspod.cn/products/publicdns))、代理([Quad9](https://quad9.net)+[谷歌DNS](https://developers.google.com/speed/public-dns?hl=zh-cn))
 
 UA参考：[chromiumdash](https://chromiumdash.appspot.com/releases)、[常见UA](https://config.net.cn/tools/UserAgent.html)、[ClashVergeRev](https://www.clashverge.dev/guide/term.html#ua)
 
-### 推文:
+CDN加速：[enhanced-FaaS-in-China](https://github.com/xingpingcn/enhanced-FaaS-in-China)
 
-[科学上网-雨夜回廊](https://myql.eu.org/article/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91)
+Zashboard: [echs-top/zashboard](https://github.com/echs-top/zashboard)
 
-### 客户端
+霞鹜文楷：[lxgw-wenkai-lite-webfont](https://www.npmjs.com/package/lxgw-wenkai-lite-webfont)
 
-**Android**：[Box(root)](https://github.com/boxproxy/box)(通用)、[Bettbox](https://github.com/appshubcc/Bettbox)、[Flyclash](https://github.com/GtxFury/FlyClash-Android)(smart)
+Action共同维护：[Gemini](gemini.google.com)、[Deepseek](https://www.deepseek.com)
 
-**Windows**：[minihomo(裸核)](https://github.com/bestruirui/minihomo)(通用)[uwp管理](https://github.com/Kindness-Kismet/WINUI3-loopback_manager)、[ClashVergeRev](https://github.com/clash-verge-rev/clash-verge-rev)
+### 客户端推荐
+
+**Android**：[Box(ROOT裸核)](https://github.com/boxproxy/box)ᵃˡˡ、[Bettbox](https://github.com/appshubcc/Bettbox)、[Prizrak-Box](https://github.com/legiz-ru/Prizrak-Box)ˢᵐᵃʳᵗ
+
+**Windows**：[minihomo(裸核工具)](https://github.com/bestruirui/minihomo)ᵃˡˡ、[Bettbox](https://github.com/appshubcc/Bettbox)、[Prizrak-Box](https://github.com/legiz-ru/Prizrak-Box)ˢᵐᵃʳᵗ
 
 **OpenClash**：[𝕄𝕀ℍ𝕆𝕄𝕆 的千种配置](https://github.com/HenryChiao/MIHOMO_YAMLS/blob/main/THEDOC/THE_REAL_README.md)
-
-### 解释
-
-1.关于禁用代理QUIC：没有完美方案，过度拦截/重复匹配规则 必须接受一样,故放弃。
-
-2.我在最后兜底前添加了“DST-PORT,10000-65535,TRACKER”这条激进的规则用以BT下载等分流，若有影响(如国外p2p下载、国外游戏等)可删除。
-
-3.关于fake-ip-filter、nameserver-policy、sniffer为什么写这么详细：为了尽可能和规则同步分流……
-
-4.关于smart分支：若使用高质量节点，那么smart分支带来的收益可能非常小。当代理体验不好时应优先选择提高节点质量，其次才是通过软件/配置/选择/分流进行设置。
-
-5.smart策略组的“asn”开启时会让所有连接都产生本地dns查询，获取ip辅助分析asn选择节点(我模板默认关闭)，是否要开启取决于两种情况：若是中转节点请务必关闭，若是直连节点且质量很差时开启asn或许有正向提升。
-
-6.关于hosts：如非必要不推荐添加hosts规则，比如添加了'baidu.com: 1.1.1.1'时，它会使用1.1.1.1去匹配规则而不是baidu.com(开启sniffer可能会对此现象有缓解)。一般只推荐添加doh域名相关host。
