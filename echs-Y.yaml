@@ -172,7 +172,7 @@ jp: &jp { filter: '(?i)🇯🇵|日本|\\bJP\\b|\\bjapan\\b', icon: 'https://mih
 us: &us { filter: '(?i)🇺🇸|美国|\\bUS\\b|\\bunitedstates\\b|\\bunited\s?states\\b', icon: 'https://mihomo.echs.top/img/Hand-Painted-icon/Rounded_Rectangle/United_States.png' }
 de: &de { filter: '(?i)🇩🇪|德国|\\bDE\\b|\\bgermany\\b', icon: 'https://mihomo.echs.top/img/Hand-Painted-icon/Rounded_Rectangle/Germany.png' }
 uk: &uk { filter: '(?i)🇬🇧|英国|\\bUK\\b|\\bGB\\b|\\bunitedkingdom\\b|\\bunited\s?kingdom\\b', icon: 'https://mihomo.echs.top/img/Hand-Painted-icon/Rounded_Rectangle/United_Kingdom.png' }
-nl: &nl { filter: '(?i)🇳🇱|荷兰|\\bNL\\b|\\bnetherlands?\\b', icon: 'https://mihomo.echs.top/img/Hand-Painted-icon/Rounded_Rectangle/Netherlands.png' }
+ru: &ru { filter: '(?i)ru|俄罗斯|\\bRU\\b|\\brussian\\b', icon: 'https://mihomo.echs.top/img/Hand-Painted-icon/Rounded_Rectangle/Russian.png' }
 auto: &auto { filter: '(?i)🇭🇰|香港|\\bHK\\b|\\bhongkong\\b|\\bhong\s?kong\\b|🇸🇬|新加坡|狮城|\\bSG\\b|\\bsingapore\\b|🇯🇵|日本|\\bJP\\b|\\bjapan\\b|🇺🇸|美国|\\bUS\\b|\\bunitedstates\\b|\\bunited\s?states\\b', icon: 'https://mihomo.echs.top/img/Hand-Painted-icon/Universal/RoundRobin.png' }
 test: &test { type: url-test, tolerance: 30, empty-fallback: REJECT, hidden: true, icon: 'https://mihomo.echs.top/img/Hand-Painted-icon/Universal/Auto_Speed.png' }
 bal: &bal { type: load-balance, strategy: round-robin, empty-fallback: REJECT, hidden: true }
