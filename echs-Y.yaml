@@ -9,7 +9,7 @@ proxy-providers:
   优质服务商: { <<: *providers, url: '优质订阅源地址1', path: ./providers/link1.yaml }
   次优服务商: { <<: *providers, url: '优质订阅源地址2', path: ./providers/link2.yaml }
   备用服务商: { <<: *providers, url: '备用订阅源地址', path: ./providers/link3.yaml }
-  聚合服务商: { <<: *providers, url: '自建订阅源地址', override: {additional-prefix: '[自建] ' path: ./providers/link4.yaml }
+  聚合服务商: { <<: *providers, url: '自建订阅源地址', override: {additional-prefix: '[自建]' path: ./providers/link4.yaml }
 # 地区分组，建议区分普通节点和专线
 area1: &area1 { use: [优质服务商,次优服务商,聚合服务商] }
 area2: &area2 { use: [备用服务商] }
